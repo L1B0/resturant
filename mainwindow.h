@@ -5,6 +5,7 @@
 #include <QtWidgets> //important
 #include <QAction>
 
+
 namespace Ui {
 class MainWindow;
 }
@@ -14,7 +15,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(QString phoneNumber,int peopleNum,QWidget *parent = 0);
+    explicit MainWindow(QString phoneNumber,int peopleNum,int tableNum,QWidget *parent = 0);
     ~MainWindow();
     void setTitle();
     bool isVIP(QString phone);
@@ -26,6 +27,11 @@ private:
 
 private slots:
     void beVIP();
+    void allMenu();
+    void chuanFood();
+    void xiangFood();
+    void yueFood();
+    void on_squareCounts_clicked();
 };
 
 #endif // MAINWINDOW_H

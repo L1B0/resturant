@@ -1,11 +1,13 @@
 #include "login.h"
+#include "common.h"
+#include "mainwindow.h"
 #include "ui_login.h"
 
 Login::Login(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Login)
 {
-    db = connect_mysql("root","666666","test","0.0.0.0");
+    db = connect_mysql("root","666666","res","0.0.0.0");
     ui->setupUi(this);
 }
 
@@ -62,6 +64,7 @@ bool Login::check_phone(QString s)
         ui->phoneNumber->clear();
         return false;
     }
+
     return true;
 }
 
@@ -77,16 +80,48 @@ bool Login::check_num(QString s)
     return true;
 }
 
+int Login::mallocTable(int num)
+{
+    QSqlQuery query(db);
+    QString sql =QString("select id,people from restable where flag=0 order by people");
+    query.exec(sql);
+
+    int tableNumber=-1;
+    while(query.next())
+    {
+        if( query.value(1).toInt() >= num )
+        {
+            tableNumber = query.value(0).toInt();
+            sql =QString("update restable set flag=1 where id=%1").arg(tableNumber);
+            query.exec(sql);
+            break;
+        }
+    }
+    return tableNumber;
+}
+
 void Login::on_loginPush_clicked()
 {
-    bool a = check_phone(ui->phoneNumber->text());
-    bool b = check_num(ui->peopleNum->text());
+    QString peo = ui->peopleNum->text(),pNum = ui->phoneNumber->text();
+    bool a;
+    bool b = check_num(peo);
+
+    if( pNum == NULL ) a = true;
+
+    else a = check_phone(pNum);
     if( a && b )
     {
         //QMessageBox::information(NULL, tr("Login"), tr("登录成功！"));
         this->close();
-        MainWindow *m = new MainWindow(ui->phoneNumber->text(),ui->peopleNum->text().toInt());
-        m->show();
+
+        int tableNumber = mallocTable(peo.toInt());
+        if( tableNumber == -1 )
+        {
+            QMessageBox::information(NULL, tr("Attention"), tr("暂无空位，请耐心等待~"));
+            return ;
+        }
+        MainWindow *m = new MainWindow(pNum,peo.toInt(),tableNumber);
+        m->show( );
     }
 }
 

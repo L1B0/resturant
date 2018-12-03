@@ -41,7 +41,7 @@ public:
     {
         if (Login->objectName().isEmpty())
             Login->setObjectName(QStringLiteral("Login"));
-        Login->resize(410, 316);
+        Login->resize(406, 329);
         label = new QLabel(Login);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(110, 30, 181, 71));
@@ -115,6 +115,7 @@ public:
         loginPush->setText(QApplication::translate("Login", "\345\274\200\345\247\213\347\202\271\351\244\220", nullptr));
         pushButton_2->setText(QApplication::translate("Login", "\351\200\200\345\207\272", nullptr));
         inputPhone->setText(QApplication::translate("Login", "\346\202\250\347\232\204\346\211\213\346\234\272\345\217\267: ", nullptr));
+        phoneNumber->setPlaceholderText(QApplication::translate("Login", "\350\213\245\351\235\236\344\274\232\345\221\230\345\210\231\344\270\215\345\241\253", nullptr));
         label_2->setText(QApplication::translate("Login", "\347\224\250\351\244\220\344\272\272\346\225\260: ", nullptr));
         peopleNum->setPlaceholderText(QApplication::translate("Login", "\344\270\215\350\266\205\350\277\20710\344\272\272", nullptr));
     } // retranslateUi

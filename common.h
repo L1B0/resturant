@@ -9,4 +9,5 @@
 using namespace std;
 
 extern QSqlDatabase db;
+extern bool vip;
 #endif // COMMON_H

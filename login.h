@@ -2,8 +2,10 @@
 #define LOGIN_H
 
 #include <QDialog>
-#include "common.h"
-#include "mainwindow.h"
+#include <QSqlDatabase>
+#include <QSqlError>
+#include <QSqlQuery>
+
 namespace Ui {
 class Login;
 }
@@ -14,6 +16,11 @@ class Login : public QDialog
 
 public:
     explicit Login(QWidget *parent = 0);
+    QSqlDatabase connect_mysql(const char*username,const char *passwd,const char *database,const char*mysqlip);
+    bool check_phone(QString s);
+    bool check_num(QString s);
+    bool VerifyNumber(QString str);
+    int mallocTable(int num);
     ~Login();
 
 private slots:
@@ -22,10 +29,6 @@ private slots:
     void on_pushButton_2_clicked();
 
 private:
-    QSqlDatabase connect_mysql(const char*username,const char *passwd,const char *database,const char*mysqlip);
-    bool check_phone(QString s);
-    bool check_num(QString s);
-    bool VerifyNumber(QString str);
 
     Ui::Login *ui;
 };
