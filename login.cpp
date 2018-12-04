@@ -83,7 +83,7 @@ bool Login::check_num(QString s)
 int Login::mallocTable(int num)
 {
     QSqlQuery query(db);
-    QString sql =QString("select id,people from restable where flag=0 order by people");
+    QString sql =QString("select id,people from restable where isused=0 order by people");
     query.exec(sql);
 
     int tableNumber=-1;
@@ -92,7 +92,7 @@ int Login::mallocTable(int num)
         if( query.value(1).toInt() >= num )
         {
             tableNumber = query.value(0).toInt();
-            sql =QString("update restable set flag=1 where id=%1").arg(tableNumber);
+            sql =QString("update restable set isused=1 where id=%1").arg(tableNumber);
             query.exec(sql);
             break;
         }
@@ -115,11 +115,13 @@ void Login::on_loginPush_clicked()
         this->close();
 
         int tableNumber = mallocTable(peo.toInt());
+
         if( tableNumber == -1 )
         {
             QMessageBox::information(NULL, tr("Attention"), tr("暂无空位，请耐心等待~"));
             return ;
         }
+        QMessageBox::information(NULL, tr("您的桌号"), QString("%1").arg(tableNumber));
         MainWindow *m = new MainWindow(pNum,peo.toInt(),tableNumber);
         m->show( );
     }

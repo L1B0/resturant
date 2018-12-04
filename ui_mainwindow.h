@@ -29,12 +29,10 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralWidget;
-    QTableWidget *tableWidget;
-    QPushButton *pushButton_8;
-    QPushButton *pushButton_9;
+    QTableWidget *oriMenu;
     QLabel *label_2;
     QLabel *label_3;
-    QTableWidget *tableWidget_2;
+    QTableWidget *clientMenu;
     QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout;
     QLabel *label_4;
@@ -51,35 +49,54 @@ public:
         MainWindow->resize(1387, 854);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        tableWidget = new QTableWidget(centralWidget);
-        tableWidget->setObjectName(QStringLiteral("tableWidget"));
-        tableWidget->setGeometry(QRect(30, 80, 641, 701));
-        pushButton_8 = new QPushButton(centralWidget);
-        pushButton_8->setObjectName(QStringLiteral("pushButton_8"));
-        pushButton_8->setGeometry(QRect(700, 220, 101, 51));
-        QFont font;
-        font.setPointSize(14);
-        pushButton_8->setFont(font);
-        pushButton_9 = new QPushButton(centralWidget);
-        pushButton_9->setObjectName(QStringLiteral("pushButton_9"));
-        pushButton_9->setGeometry(QRect(700, 310, 101, 51));
-        pushButton_9->setFont(font);
+        oriMenu = new QTableWidget(centralWidget);
+        if (oriMenu->columnCount() < 5)
+            oriMenu->setColumnCount(5);
+        QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
+        oriMenu->setHorizontalHeaderItem(0, __qtablewidgetitem);
+        QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
+        oriMenu->setHorizontalHeaderItem(1, __qtablewidgetitem1);
+        QTableWidgetItem *__qtablewidgetitem2 = new QTableWidgetItem();
+        oriMenu->setHorizontalHeaderItem(2, __qtablewidgetitem2);
+        QTableWidgetItem *__qtablewidgetitem3 = new QTableWidgetItem();
+        oriMenu->setHorizontalHeaderItem(3, __qtablewidgetitem3);
+        QTableWidgetItem *__qtablewidgetitem4 = new QTableWidgetItem();
+        oriMenu->setHorizontalHeaderItem(4, __qtablewidgetitem4);
+        oriMenu->setObjectName(QStringLiteral("oriMenu"));
+        oriMenu->setGeometry(QRect(30, 80, 641, 701));
+        oriMenu->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        oriMenu->setSelectionMode(QAbstractItemView::SingleSelection);
+        oriMenu->setSelectionBehavior(QAbstractItemView::SelectRows);
         label_2 = new QLabel(centralWidget);
         label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setGeometry(QRect(820, 60, 151, 51));
-        QFont font1;
-        font1.setPointSize(25);
-        label_2->setFont(font1);
+        label_2->setGeometry(QRect(700, 60, 151, 51));
+        QFont font;
+        font.setPointSize(25);
+        label_2->setFont(font);
         label_3 = new QLabel(centralWidget);
         label_3->setObjectName(QStringLiteral("label_3"));
         label_3->setGeometry(QRect(30, 20, 151, 51));
-        label_3->setFont(font1);
-        tableWidget_2 = new QTableWidget(centralWidget);
-        tableWidget_2->setObjectName(QStringLiteral("tableWidget_2"));
-        tableWidget_2->setGeometry(QRect(820, 130, 531, 651));
+        label_3->setFont(font);
+        clientMenu = new QTableWidget(centralWidget);
+        if (clientMenu->columnCount() < 5)
+            clientMenu->setColumnCount(5);
+        QTableWidgetItem *__qtablewidgetitem5 = new QTableWidgetItem();
+        clientMenu->setHorizontalHeaderItem(0, __qtablewidgetitem5);
+        QTableWidgetItem *__qtablewidgetitem6 = new QTableWidgetItem();
+        clientMenu->setHorizontalHeaderItem(1, __qtablewidgetitem6);
+        QTableWidgetItem *__qtablewidgetitem7 = new QTableWidgetItem();
+        clientMenu->setHorizontalHeaderItem(2, __qtablewidgetitem7);
+        QTableWidgetItem *__qtablewidgetitem8 = new QTableWidgetItem();
+        clientMenu->setHorizontalHeaderItem(3, __qtablewidgetitem8);
+        QTableWidgetItem *__qtablewidgetitem9 = new QTableWidgetItem();
+        clientMenu->setHorizontalHeaderItem(4, __qtablewidgetitem9);
+        clientMenu->setObjectName(QStringLiteral("clientMenu"));
+        clientMenu->setGeometry(QRect(700, 130, 651, 651));
+        clientMenu->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        clientMenu->setSelectionBehavior(QAbstractItemView::SelectRows);
         layoutWidget = new QWidget(centralWidget);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(1130, 50, 222, 71));
+        layoutWidget->setGeometry(QRect(1120, 50, 222, 71));
         horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setSpacing(6);
         horizontalLayout->setContentsMargins(11, 11, 11, 11);
@@ -87,9 +104,9 @@ public:
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
         label_4 = new QLabel(layoutWidget);
         label_4->setObjectName(QStringLiteral("label_4"));
-        QFont font2;
-        font2.setPointSize(15);
-        label_4->setFont(font2);
+        QFont font1;
+        font1.setPointSize(15);
+        label_4->setFont(font1);
 
         horizontalLayout->addWidget(label_4);
 
@@ -101,7 +118,9 @@ public:
 
         squareCounts = new QPushButton(layoutWidget);
         squareCounts->setObjectName(QStringLiteral("squareCounts"));
-        squareCounts->setFont(font);
+        QFont font2;
+        font2.setPointSize(14);
+        squareCounts->setFont(font2);
 
         horizontalLayout->addWidget(squareCounts);
 
@@ -125,10 +144,28 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
-        pushButton_8->setText(QApplication::translate("MainWindow", "\346\267\273\345\212\240", nullptr));
-        pushButton_9->setText(QApplication::translate("MainWindow", "\345\210\240\351\231\244", nullptr));
+        QTableWidgetItem *___qtablewidgetitem = oriMenu->horizontalHeaderItem(0);
+        ___qtablewidgetitem->setText(QApplication::translate("MainWindow", "\350\217\234\345\217\267", nullptr));
+        QTableWidgetItem *___qtablewidgetitem1 = oriMenu->horizontalHeaderItem(1);
+        ___qtablewidgetitem1->setText(QApplication::translate("MainWindow", "\350\217\234\345\220\215", nullptr));
+        QTableWidgetItem *___qtablewidgetitem2 = oriMenu->horizontalHeaderItem(2);
+        ___qtablewidgetitem2->setText(QApplication::translate("MainWindow", "\344\273\267\346\240\274", nullptr));
+        QTableWidgetItem *___qtablewidgetitem3 = oriMenu->horizontalHeaderItem(3);
+        ___qtablewidgetitem3->setText(QApplication::translate("MainWindow", "\347\261\273\345\210\253", nullptr));
+        QTableWidgetItem *___qtablewidgetitem4 = oriMenu->horizontalHeaderItem(4);
+        ___qtablewidgetitem4->setText(QApplication::translate("MainWindow", "\345\217\243\345\221\263", nullptr));
         label_2->setText(QApplication::translate("MainWindow", "\350\264\246\345\215\225\350\257\246\346\203\205", nullptr));
         label_3->setText(QApplication::translate("MainWindow", "\350\217\234\350\260\261\346\230\216\347\273\206", nullptr));
+        QTableWidgetItem *___qtablewidgetitem5 = clientMenu->horizontalHeaderItem(0);
+        ___qtablewidgetitem5->setText(QApplication::translate("MainWindow", "\350\217\234\345\217\267", nullptr));
+        QTableWidgetItem *___qtablewidgetitem6 = clientMenu->horizontalHeaderItem(1);
+        ___qtablewidgetitem6->setText(QApplication::translate("MainWindow", "\350\217\234\345\220\215", nullptr));
+        QTableWidgetItem *___qtablewidgetitem7 = clientMenu->horizontalHeaderItem(2);
+        ___qtablewidgetitem7->setText(QApplication::translate("MainWindow", "\345\217\243\345\221\263", nullptr));
+        QTableWidgetItem *___qtablewidgetitem8 = clientMenu->horizontalHeaderItem(3);
+        ___qtablewidgetitem8->setText(QApplication::translate("MainWindow", "\346\225\260\351\207\217", nullptr));
+        QTableWidgetItem *___qtablewidgetitem9 = clientMenu->horizontalHeaderItem(4);
+        ___qtablewidgetitem9->setText(QApplication::translate("MainWindow", "\344\273\267\346\240\274", nullptr));
         label_4->setText(QApplication::translate("MainWindow", "\346\266\210\350\264\271\351\207\221\351\242\235: ", nullptr));
         squareCounts->setText(QApplication::translate("MainWindow", "\347\273\223\350\264\246", nullptr));
     } // retranslateUi

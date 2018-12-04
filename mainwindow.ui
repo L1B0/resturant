@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QTableWidget" name="tableWidget">
+   <widget class="QTableWidget" name="oriMenu">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -23,47 +23,45 @@
       <height>701</height>
      </rect>
     </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_8">
-    <property name="geometry">
-     <rect>
-      <x>700</x>
-      <y>220</y>
-      <width>101</width>
-      <height>51</height>
-     </rect>
+    <property name="editTriggers">
+     <set>QAbstractItemView::NoEditTriggers</set>
     </property>
-    <property name="font">
-     <font>
-      <pointsize>14</pointsize>
-     </font>
+    <property name="selectionMode">
+     <enum>QAbstractItemView::SingleSelection</enum>
     </property>
-    <property name="text">
-     <string>添加</string>
+    <property name="selectionBehavior">
+     <enum>QAbstractItemView::SelectRows</enum>
     </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_9">
-    <property name="geometry">
-     <rect>
-      <x>700</x>
-      <y>310</y>
-      <width>101</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>14</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>删除</string>
-    </property>
+    <column>
+     <property name="text">
+      <string>菜号</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>菜名</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>价格</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>类别</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>口味</string>
+     </property>
+    </column>
    </widget>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>820</x>
+      <x>700</x>
       <y>60</y>
       <width>151</width>
       <height>51</height>
@@ -96,20 +94,51 @@
      <string>菜谱明细</string>
     </property>
    </widget>
-   <widget class="QTableWidget" name="tableWidget_2">
+   <widget class="QTableWidget" name="clientMenu">
     <property name="geometry">
      <rect>
-      <x>820</x>
+      <x>700</x>
       <y>130</y>
-      <width>531</width>
+      <width>651</width>
       <height>651</height>
      </rect>
     </property>
+    <property name="editTriggers">
+     <set>QAbstractItemView::NoEditTriggers</set>
+    </property>
+    <property name="selectionBehavior">
+     <enum>QAbstractItemView::SelectRows</enum>
+    </property>
+    <column>
+     <property name="text">
+      <string>菜号</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>菜名</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>口味</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>数量</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>价格</string>
+     </property>
+    </column>
    </widget>
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>1130</x>
+      <x>1120</x>
       <y>50</y>
       <width>222</width>
       <height>71</height>
