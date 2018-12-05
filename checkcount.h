@@ -32,7 +32,7 @@ private:
     int tN;
     QString p;
     QTableWidget *pT;
-    int sP;
+    float sP;
     void mycheck();
     Ui::checkCount *ui;
 };

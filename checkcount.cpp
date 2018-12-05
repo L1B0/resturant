@@ -40,8 +40,9 @@ void checkCount::mycheck()
     qDebug() << vipRank;
 
     ui->vipTitle->setText(QString("您的会员等级为:%1 享受%2折优惠！").arg(vipRank).arg(10-vipRank));
-    ui->sumPrice->setText(QString("%1").arg(sP));
-    ui->realPrice->setText(QString("%1").arg((float)(sP)*(10-vipRank)/10));
+    ui->sumPrice->setText(QString("消费金额: %1").arg(sP));
+    sP = (float)(sP)*(10-vipRank)/10;
+    ui->realPrice->setText(QString("应收: %1").arg(sP));
 
     for(int i=0;i<pT->rowCount();i++)
     {
@@ -65,6 +66,7 @@ void checkCount::on_ac_clicked()
 
     QString note = ui->textEdit->toPlainText();
     qDebug() << "beizhu: " << note;
+    //gaigaigai!!!
     sql = QString("insert into orderform(ordernumber,notes,phonenumber,money,tableid) values('%1','%2','%3',%4,%5)").arg(nowOrderId).arg(note).arg(p).arg(sP).arg(tN);
     bool ff = query.exec(sql);
     qDebug() << "insert order : " << ff;

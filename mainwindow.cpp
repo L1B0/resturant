@@ -13,7 +13,9 @@ MainWindow::MainWindow(QString phoneNumber,int peopleNum,int tableNum,QWidget *p
     people = peopleNum;
     phone = phoneNumber;
     tableNumber = tableNum; //sql select
-    ui->sumPrice->setText("0");
+
+    ui->sumPr->setText("消费金额: 0");
+    sumPrice = 0;
 
     setTitle();
     QMenu *vip = menuBar()->addMenu(tr("&会员"));
@@ -211,7 +213,7 @@ void MainWindow::on_squareCounts_clicked()
 {
     //qDebug() << ui->clientMenu->rowCount();
     bool flag;
-    checkCount c(phone, tableNumber, ui->clientMenu,ui->sumPrice->text().toInt(),flag);
+    checkCount c(phone, tableNumber, ui->clientMenu,sumPrice,flag);
     c.setWindowTitle("消费明细");
     c.exec();
 
@@ -227,7 +229,7 @@ void MainWindow::on_oriMenu_cellDoubleClicked(int row, int column)
 {
     QMessageBox::information(NULL, tr("提醒"), tr("加菜~"));
 
-    int i, nowSumPrice = ui->sumPrice->text().toInt();
+    int i;
     bool flag = false;
     for(i=0;i<ui->clientMenu->rowCount();i++)
     {
@@ -242,7 +244,8 @@ void MainWindow::on_oriMenu_cellDoubleClicked(int row, int column)
     {
         int nowNum = ui->clientMenu->item(i,3)->text().toInt(), nowPrice = ui->clientMenu->item(i,4)->text().toInt();
         int newNum = nowNum+1, newPrice = nowPrice/nowNum + nowPrice;
-        ui->sumPrice->setText(QString("%1").arg(nowSumPrice+newPrice-nowPrice));
+        sumPrice += newPrice-nowPrice;
+        ui->sumPr->setText(QString("消费金额: %1").arg(sumPrice));
         ui->clientMenu->setItem(i,3,new QTableWidgetItem(QString("%1").arg(newNum)));
         ui->clientMenu->setItem(i,4,new QTableWidgetItem(QString("%1").arg(newPrice)));
     }
@@ -257,8 +260,10 @@ void MainWindow::on_oriMenu_cellDoubleClicked(int row, int column)
         ui->clientMenu->setItem(rowCount,3,new QTableWidgetItem(QString("1")));
         ui->clientMenu->setItem(rowCount,4,new QTableWidgetItem(ui->oriMenu->item(row,2)->text()));
 
-        ui->sumPrice->setText(QString("%1").arg(nowSumPrice+ui->oriMenu->item(row,2)->text().toInt()));
+        sumPrice += ui->oriMenu->item(row,2)->text().toInt();
+        ui->sumPr->setText(QString("消费金额: %1").arg(sumPrice));
     }
+
     return ;
 }
 
@@ -267,9 +272,10 @@ void MainWindow::on_clientMenu_cellDoubleClicked(int row, int column)
     QMessageBox::information(NULL, tr("提醒"), tr("减菜~"));
 
     int nowNum = ui->clientMenu->item(row,3)->text().toInt(), nowPrice = ui->clientMenu->item(row,4)->text().toInt();
-    int newNum = nowNum-1, newPrice = nowPrice-nowPrice/nowNum, nowSumPrice = ui->sumPrice->text().toInt();
+    int newNum = nowNum-1, newPrice = nowPrice-nowPrice/nowNum;
 
-    ui->sumPrice->setText(QString("%1").arg(nowSumPrice+newPrice-nowPrice));
+    sumPrice += newPrice-nowPrice;
+    ui->sumPr->setText(QString("消费金额: %1").arg(sumPrice));
     if( newNum == 0 )
     {
         ui->clientMenu->removeRow(row);

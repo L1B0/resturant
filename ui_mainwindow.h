@@ -14,7 +14,6 @@
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
-#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
@@ -35,8 +34,7 @@ public:
     QTableWidget *clientMenu;
     QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout;
-    QLabel *label_4;
-    QLineEdit *sumPrice;
+    QLabel *sumPr;
     QPushButton *squareCounts;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
@@ -69,7 +67,7 @@ public:
         oriMenu->setSelectionBehavior(QAbstractItemView::SelectRows);
         label_2 = new QLabel(centralWidget);
         label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setGeometry(QRect(700, 60, 151, 51));
+        label_2->setGeometry(QRect(700, 20, 151, 51));
         QFont font;
         font.setPointSize(25);
         label_2->setFont(font);
@@ -91,30 +89,24 @@ public:
         QTableWidgetItem *__qtablewidgetitem9 = new QTableWidgetItem();
         clientMenu->setHorizontalHeaderItem(4, __qtablewidgetitem9);
         clientMenu->setObjectName(QStringLiteral("clientMenu"));
-        clientMenu->setGeometry(QRect(700, 130, 651, 651));
+        clientMenu->setGeometry(QRect(700, 80, 651, 701));
         clientMenu->setEditTriggers(QAbstractItemView::NoEditTriggers);
         clientMenu->setSelectionBehavior(QAbstractItemView::SelectRows);
         layoutWidget = new QWidget(centralWidget);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(1101, 50, 241, 71));
+        layoutWidget->setGeometry(QRect(1110, 10, 241, 71));
         horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setSpacing(6);
         horizontalLayout->setContentsMargins(11, 11, 11, 11);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        label_4 = new QLabel(layoutWidget);
-        label_4->setObjectName(QStringLiteral("label_4"));
+        sumPr = new QLabel(layoutWidget);
+        sumPr->setObjectName(QStringLiteral("sumPr"));
         QFont font1;
         font1.setPointSize(15);
-        label_4->setFont(font1);
+        sumPr->setFont(font1);
 
-        horizontalLayout->addWidget(label_4);
-
-        sumPrice = new QLineEdit(layoutWidget);
-        sumPrice->setObjectName(QStringLiteral("sumPrice"));
-        sumPrice->setEnabled(false);
-
-        horizontalLayout->addWidget(sumPrice);
+        horizontalLayout->addWidget(sumPr);
 
         squareCounts = new QPushButton(layoutWidget);
         squareCounts->setObjectName(QStringLiteral("squareCounts"));
@@ -166,7 +158,7 @@ public:
         ___qtablewidgetitem8->setText(QApplication::translate("MainWindow", "\346\225\260\351\207\217", nullptr));
         QTableWidgetItem *___qtablewidgetitem9 = clientMenu->horizontalHeaderItem(4);
         ___qtablewidgetitem9->setText(QApplication::translate("MainWindow", "\344\273\267\346\240\274", nullptr));
-        label_4->setText(QApplication::translate("MainWindow", "\346\266\210\350\264\271\351\207\221\351\242\235: ", nullptr));
+        sumPr->setText(QApplication::translate("MainWindow", "\346\266\210\350\264\271\351\207\221\351\242\235: ", nullptr));
         squareCounts->setText(QApplication::translate("MainWindow", "\347\273\223\350\264\246", nullptr));
     } // retranslateUi
 

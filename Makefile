@@ -268,10 +268,12 @@ DIST          = /opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/spec_pre.prf \
 		login.h \
 		mainwindow.h \
 		registervip.h \
+		ui_checkcount.h \
 		ui_login.h \
 		ui_mainwindow.h \
 		ui_registervip.h \
 		ui_seat.h \
+		ui_vipcost.h \
 		ui_vipinfoo.h \
 		vipcost.h \
 		vipinfoo.h checkcount.cpp \
@@ -694,7 +696,7 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents checkcount.h common.h login.h mainwindow.h registervip.h ui_login.h ui_mainwindow.h ui_registervip.h ui_seat.h ui_vipinfoo.h vipcost.h vipinfoo.h $(DISTDIR)/
+	$(COPY_FILE) --parents checkcount.h common.h login.h mainwindow.h registervip.h ui_checkcount.h ui_login.h ui_mainwindow.h ui_registervip.h ui_seat.h ui_vipcost.h ui_vipinfoo.h vipcost.h vipinfoo.h $(DISTDIR)/
 	$(COPY_FILE) --parents checkcount.cpp login.cpp main.cpp mainwindow.cpp registervip.cpp vipcost.cpp vipinfoo.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents checkcount.ui login.ui mainwindow.ui registervip.ui vipcost.ui vipinfoo.ui $(DISTDIR)/
 
@@ -2002,7 +2004,35 @@ checkcount.o: checkcount.cpp checkcount.h \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtSql/qsqlquery.h \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QMessageBox \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qmessagebox.h \
-		ui_checkcount.h
+		ui_checkcount.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/QVariant \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QApplication \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qapplication.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qcoreapplication.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qeventloop.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qguiapplication.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qinputmethod.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QHBoxLayout \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qboxlayout.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qlayout.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qlayoutitem.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qgridlayout.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QHeaderView \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qheaderview.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QLabel \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qlabel.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QPushButton \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qpushbutton.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QTextEdit \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qtextedit.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qtextdocument.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qtextoption.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qtextcursor.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qtextformat.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qpen.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QVBoxLayout \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o checkcount.o checkcount.cpp
 
 login.o: login.cpp login.h \
@@ -3430,7 +3460,6 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QHBoxLayout \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QHeaderView \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QLabel \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QLineEdit \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QMenuBar \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QPushButton \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QStatusBar \
@@ -3701,7 +3730,39 @@ vipcost.o: vipcost.cpp vipcost.h \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QMessageBox \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qmessagebox.h \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/QDebug \
-		ui_vipcost.h
+		ui_vipcost.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/QVariant \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QApplication \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qapplication.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qcoreapplication.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qeventloop.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qguiapplication.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qinputmethod.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QDialogButtonBox \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qdialogbuttonbox.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QHeaderView \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qheaderview.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qabstractitemview.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qframe.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qabstractitemmodel.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qitemselectionmodel.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qstyleoption.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qvalidator.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qregularexpression.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qicon.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qslider.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qabstractslider.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qstyle.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qtabbar.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qtabwidget.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qrubberband.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QTableWidget \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qtablewidget.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qtableview.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o vipcost.o vipcost.cpp
 
 vipinfoo.o: vipinfoo.cpp vipinfoo.h \

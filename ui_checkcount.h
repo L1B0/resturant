@@ -15,7 +15,6 @@
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
-#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTableWidget>
 #include <QtWidgets/QTextEdit>
@@ -29,19 +28,17 @@ class Ui_checkCount
 public:
     QLabel *vipTitle;
     QLabel *payCode;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout;
-    QLabel *label;
-    QLineEdit *sumPrice;
+    QLabel *sumPrice;
     QHBoxLayout *horizontalLayout_2;
-    QLabel *label_3;
-    QLineEdit *realPrice;
-    QWidget *widget1;
+    QLabel *realPrice;
+    QWidget *layoutWidget1;
     QHBoxLayout *horizontalLayout_3;
     QPushButton *ac;
     QPushButton *reject;
-    QWidget *widget2;
+    QWidget *layoutWidget2;
     QVBoxLayout *verticalLayout_2;
     QTableWidget *clientMenu;
     QTextEdit *textEdit;
@@ -61,23 +58,17 @@ public:
         payCode->setObjectName(QStringLiteral("payCode"));
         payCode->setGeometry(QRect(660, 30, 441, 611));
         payCode->setScaledContents(true);
-        widget = new QWidget(checkCount);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(420, 10, 208, 74));
-        verticalLayout = new QVBoxLayout(widget);
+        layoutWidget = new QWidget(checkCount);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(420, 10, 208, 74));
+        verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        label = new QLabel(widget);
-        label->setObjectName(QStringLiteral("label"));
-        label->setFont(font);
-
-        horizontalLayout->addWidget(label);
-
-        sumPrice = new QLineEdit(widget);
+        sumPrice = new QLabel(layoutWidget);
         sumPrice->setObjectName(QStringLiteral("sumPrice"));
-        sumPrice->setEnabled(false);
+        sumPrice->setFont(font);
 
         horizontalLayout->addWidget(sumPrice);
 
@@ -86,44 +77,38 @@ public:
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        label_3 = new QLabel(widget);
-        label_3->setObjectName(QStringLiteral("label_3"));
-        label_3->setFont(font);
-
-        horizontalLayout_2->addWidget(label_3);
-
-        realPrice = new QLineEdit(widget);
+        realPrice = new QLabel(layoutWidget);
         realPrice->setObjectName(QStringLiteral("realPrice"));
-        realPrice->setEnabled(false);
+        realPrice->setFont(font);
 
         horizontalLayout_2->addWidget(realPrice);
 
 
         verticalLayout->addLayout(horizontalLayout_2);
 
-        widget1 = new QWidget(checkCount);
-        widget1->setObjectName(QStringLiteral("widget1"));
-        widget1->setGeometry(QRect(950, 650, 168, 28));
-        horizontalLayout_3 = new QHBoxLayout(widget1);
+        layoutWidget1 = new QWidget(checkCount);
+        layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(950, 650, 168, 28));
+        horizontalLayout_3 = new QHBoxLayout(layoutWidget1);
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
         horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
-        ac = new QPushButton(widget1);
+        ac = new QPushButton(layoutWidget1);
         ac->setObjectName(QStringLiteral("ac"));
 
         horizontalLayout_3->addWidget(ac);
 
-        reject = new QPushButton(widget1);
+        reject = new QPushButton(layoutWidget1);
         reject->setObjectName(QStringLiteral("reject"));
 
         horizontalLayout_3->addWidget(reject);
 
-        widget2 = new QWidget(checkCount);
-        widget2->setObjectName(QStringLiteral("widget2"));
-        widget2->setGeometry(QRect(40, 100, 611, 541));
-        verticalLayout_2 = new QVBoxLayout(widget2);
+        layoutWidget2 = new QWidget(checkCount);
+        layoutWidget2->setObjectName(QStringLiteral("layoutWidget2"));
+        layoutWidget2->setGeometry(QRect(40, 100, 611, 541));
+        verticalLayout_2 = new QVBoxLayout(layoutWidget2);
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
-        clientMenu = new QTableWidget(widget2);
+        clientMenu = new QTableWidget(layoutWidget2);
         if (clientMenu->columnCount() < 5)
             clientMenu->setColumnCount(5);
         QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
@@ -142,7 +127,7 @@ public:
 
         verticalLayout_2->addWidget(clientMenu);
 
-        textEdit = new QTextEdit(widget2);
+        textEdit = new QTextEdit(layoutWidget2);
         textEdit->setObjectName(QStringLiteral("textEdit"));
 
         verticalLayout_2->addWidget(textEdit);
@@ -158,8 +143,8 @@ public:
         checkCount->setWindowTitle(QApplication::translate("checkCount", "Dialog", nullptr));
         vipTitle->setText(QApplication::translate("checkCount", "\346\202\250\347\232\204\347\255\211\347\272\247\344\270\272:  \344\272\253\345\217\227 \346\212\230\344\274\230\346\203\240\357\274\201", nullptr));
         payCode->setText(QString());
-        label->setText(QApplication::translate("checkCount", "\346\266\210\350\264\271\351\207\221\351\242\235: ", nullptr));
-        label_3->setText(QApplication::translate("checkCount", "\345\272\224\346\224\266: ", nullptr));
+        sumPrice->setText(QApplication::translate("checkCount", "\346\266\210\350\264\271\351\207\221\351\242\235: ", nullptr));
+        realPrice->setText(QApplication::translate("checkCount", "\345\272\224\346\224\266: ", nullptr));
         ac->setText(QApplication::translate("checkCount", "\347\241\256\345\256\232", nullptr));
         reject->setText(QApplication::translate("checkCount", "\345\217\226\346\266\210", nullptr));
         QTableWidgetItem *___qtablewidgetitem = clientMenu->horizontalHeaderItem(0);

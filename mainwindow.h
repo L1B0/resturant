@@ -25,7 +25,7 @@ public:
 private:
     Ui::MainWindow *ui;
     QString phone;
-    int people,tableNumber;
+    int people,tableNumber,sumPrice;
     bool paied;
     void closeEvent( QCloseEvent *e );
 
