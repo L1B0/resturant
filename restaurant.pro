@@ -21,12 +21,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 HEADERS += common.h login.h mainwindow.h ui_login.h ui_mainwindow.h \
     registervip.h \
     vipinfoo.h \
-    vipcost.h
+    vipcost.h \
+    checkcount.h
 FORMS += login.ui mainwindow.ui \
     registervip.ui \
     vipinfoo.ui \
-    vipcost.ui
+    vipcost.ui \
+    checkcount.ui
 SOURCES += login.cpp main.cpp mainwindow.cpp \
     registervip.cpp \
     vipinfoo.cpp \
-    vipcost.cpp
+    vipcost.cpp \
+    checkcount.cpp

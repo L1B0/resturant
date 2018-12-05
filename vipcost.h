@@ -14,7 +14,7 @@ class vipCost : public QDialog
     Q_OBJECT
 
 public:
-    explicit vipCost(QString p,QWidget *parent = 0);
+    explicit vipCost(QString p, QWidget *parent = 0);
     ~vipCost();
 
 private:

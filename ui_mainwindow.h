@@ -96,7 +96,7 @@ public:
         clientMenu->setSelectionBehavior(QAbstractItemView::SelectRows);
         layoutWidget = new QWidget(centralWidget);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(1120, 50, 222, 71));
+        layoutWidget->setGeometry(QRect(1101, 50, 241, 71));
         horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setSpacing(6);
         horizontalLayout->setContentsMargins(11, 11, 11, 11);

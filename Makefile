@@ -50,22 +50,30 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = login.cpp \
+SOURCES       = checkcount.cpp \
+		login.cpp \
 		main.cpp \
 		mainwindow.cpp \
 		registervip.cpp \
-		vipinfoo.cpp moc_login.cpp \
+		vipcost.cpp \
+		vipinfoo.cpp moc_checkcount.cpp \
+		moc_login.cpp \
 		moc_mainwindow.cpp \
 		moc_registervip.cpp \
+		moc_vipcost.cpp \
 		moc_vipinfoo.cpp
-OBJECTS       = login.o \
+OBJECTS       = checkcount.o \
+		login.o \
 		main.o \
 		mainwindow.o \
 		registervip.o \
+		vipcost.o \
 		vipinfoo.o \
+		moc_checkcount.o \
 		moc_login.o \
 		moc_mainwindow.o \
 		moc_registervip.o \
+		moc_vipcost.o \
 		moc_vipinfoo.o
 DIST          = /opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/spec_pre.prf \
 		/opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/common/unix.conf \
@@ -255,7 +263,8 @@ DIST          = /opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/spec_pre.prf \
 		/opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/exceptions.prf \
 		/opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/yacc.prf \
 		/opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/lex.prf \
-		resturant.pro common.h \
+		resturant.pro checkcount.h \
+		common.h \
 		login.h \
 		mainwindow.h \
 		registervip.h \
@@ -264,10 +273,13 @@ DIST          = /opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/spec_pre.prf \
 		ui_registervip.h \
 		ui_seat.h \
 		ui_vipinfoo.h \
-		vipinfoo.h login.cpp \
+		vipcost.h \
+		vipinfoo.h checkcount.cpp \
+		login.cpp \
 		main.cpp \
 		mainwindow.cpp \
 		registervip.cpp \
+		vipcost.cpp \
 		vipinfoo.cpp
 QMAKE_TARGET  = resturant
 DESTDIR       = 
@@ -277,7 +289,7 @@ TARGET        = resturant
 first: all
 ####### Build rules
 
-$(TARGET): ui_login.h ui_mainwindow.h ui_registervip.h ui_vipinfoo.h $(OBJECTS)  
+$(TARGET): ui_checkcount.h ui_login.h ui_mainwindow.h ui_registervip.h ui_vipcost.h ui_vipinfoo.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: resturant.pro /opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/linux-g++/qmake.conf /opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/spec_pre.prf \
@@ -682,9 +694,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents common.h login.h mainwindow.h registervip.h ui_login.h ui_mainwindow.h ui_registervip.h ui_seat.h ui_vipinfoo.h vipinfoo.h $(DISTDIR)/
-	$(COPY_FILE) --parents login.cpp main.cpp mainwindow.cpp registervip.cpp vipinfoo.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents login.ui mainwindow.ui registervip.ui vipinfoo.ui $(DISTDIR)/
+	$(COPY_FILE) --parents checkcount.h common.h login.h mainwindow.h registervip.h ui_login.h ui_mainwindow.h ui_registervip.h ui_seat.h ui_vipinfoo.h vipcost.h vipinfoo.h $(DISTDIR)/
+	$(COPY_FILE) --parents checkcount.cpp login.cpp main.cpp mainwindow.cpp registervip.cpp vipcost.cpp vipinfoo.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents checkcount.ui login.ui mainwindow.ui registervip.ui vipcost.ui vipinfoo.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -716,9 +728,152 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/data/dummy.cpp
 	g++ -pipe -O2 -Wall -W -dM -E -o moc_predefs.h /opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_login.cpp moc_mainwindow.cpp moc_registervip.cpp moc_vipinfoo.cpp
+compiler_moc_header_make_all: moc_checkcount.cpp moc_login.cpp moc_mainwindow.cpp moc_registervip.cpp moc_vipcost.cpp moc_vipinfoo.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_login.cpp moc_mainwindow.cpp moc_registervip.cpp moc_vipinfoo.cpp
+	-$(DEL_FILE) moc_checkcount.cpp moc_login.cpp moc_mainwindow.cpp moc_registervip.cpp moc_vipcost.cpp moc_vipinfoo.cpp
+moc_checkcount.cpp: /opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QDialog \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qdialog.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qtguiglobal.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qglobal.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qconfig.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qtcore-config.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qsystemdetection.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qprocessordetection.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qcompilerdetection.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qtypeinfo.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qsysinfo.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qlogging.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qflags.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qatomic.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qbasicatomic.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qgenericatomic.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qatomic_msvc.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qglobalstatic.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qmutex.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qnumeric.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qversiontagging.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qtgui-config.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qwidget.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qwindowdefs.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qobjectdefs.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qnamespace.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qobject.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qstring.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qchar.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qbytearray.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qrefcount.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qarraydata.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qstringliteral.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qstringalgorithms.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qstringview.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qstringbuilder.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qlist.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qalgorithms.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qiterator.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qhashfunctions.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qpair.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qbytearraylist.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qstringlist.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qregexp.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qstringmatcher.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qcoreevent.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qscopedpointer.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qmetatype.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qvarlengtharray.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qcontainerfwd.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qobject_impl.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qmargins.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qpaintdevice.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qrect.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qsize.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qpoint.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qpalette.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qcolor.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qrgb.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qrgba64.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qbrush.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qvector.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qmatrix.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qpolygon.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qregion.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qdatastream.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qiodevice.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qline.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qtransform.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qpainterpath.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qimage.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qpixelformat.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qpixmap.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qsharedpointer.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qshareddata.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qhash.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qfont.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qfontmetrics.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qfontinfo.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qcursor.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qkeysequence.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qevent.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qvariant.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qmap.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qdebug.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qtextstream.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qlocale.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qset.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qcontiguouscache.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qurl.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qurlquery.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qfile.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qfiledevice.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qvector2d.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qtouchdevice.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/QDebug \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QTableWidget \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qtablewidget.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qtableview.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qabstractitemview.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qframe.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qabstractitemmodel.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qitemselectionmodel.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qstyleoption.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qvalidator.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qregularexpression.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qicon.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qslider.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qabstractslider.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qstyle.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qtabbar.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qtabwidget.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qrubberband.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/QLatin1Literal \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QAbstractButton \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qabstractbutton.h \
+		common.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtSql/QSqlDatabase \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtSql/qsqldatabase.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtSql/qtsqlglobal.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtSql/QSqlError \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtSql/qsqlerror.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtSql/QSqlQuery \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtSql/qsqlquery.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QMessageBox \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qmessagebox.h \
+		checkcount.h \
+		moc_predefs.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/bin/moc
+	/opt/Qt5.11.1/5.11.1/gcc_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/linux-g++ -I/media/l1b0/软件工程_日常/大三上/数据库原理与设计/大作业/resturant -I/media/l1b0/软件工程_日常/大三上/数据库原理与设计/大作业/resturant -I/opt/Qt5.11.1/5.11.1/gcc_64/include -I/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets -I/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui -I/opt/Qt5.11.1/5.11.1/gcc_64/include/QtSql -I/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include checkcount.h -o moc_checkcount.cpp
+
 moc_login.cpp: /opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QDialog \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qdialog.h \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
@@ -1425,6 +1580,128 @@ moc_registervip.cpp: /opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QDialog \
 		/opt/Qt5.11.1/5.11.1/gcc_64/bin/moc
 	/opt/Qt5.11.1/5.11.1/gcc_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/linux-g++ -I/media/l1b0/软件工程_日常/大三上/数据库原理与设计/大作业/resturant -I/media/l1b0/软件工程_日常/大三上/数据库原理与设计/大作业/resturant -I/opt/Qt5.11.1/5.11.1/gcc_64/include -I/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets -I/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui -I/opt/Qt5.11.1/5.11.1/gcc_64/include/QtSql -I/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include registervip.h -o moc_registervip.cpp
 
+moc_vipcost.cpp: /opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QDialog \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qdialog.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qtguiglobal.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qglobal.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qconfig.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qtcore-config.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qsystemdetection.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qprocessordetection.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qcompilerdetection.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qtypeinfo.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qsysinfo.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qlogging.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qflags.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qatomic.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qbasicatomic.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qgenericatomic.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qatomic_msvc.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qglobalstatic.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qmutex.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qnumeric.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qversiontagging.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qtgui-config.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qwidget.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qwindowdefs.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qobjectdefs.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qnamespace.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qobject.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qstring.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qchar.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qbytearray.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qrefcount.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qarraydata.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qstringliteral.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qstringalgorithms.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qstringview.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qstringbuilder.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qlist.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qalgorithms.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qiterator.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qhashfunctions.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qpair.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qbytearraylist.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qstringlist.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qregexp.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qstringmatcher.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qcoreevent.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qscopedpointer.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qmetatype.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qvarlengtharray.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qcontainerfwd.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qobject_impl.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qmargins.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qpaintdevice.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qrect.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qsize.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qpoint.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qpalette.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qcolor.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qrgb.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qrgba64.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qbrush.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qvector.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qmatrix.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qpolygon.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qregion.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qdatastream.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qiodevice.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qline.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qtransform.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qpainterpath.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qimage.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qpixelformat.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qpixmap.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qsharedpointer.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qshareddata.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qhash.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qfont.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qfontmetrics.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qfontinfo.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qcursor.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qkeysequence.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qevent.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qvariant.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qmap.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qdebug.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qtextstream.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qlocale.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qset.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qcontiguouscache.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qurl.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qurlquery.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qfile.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qfiledevice.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qvector2d.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qtouchdevice.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/QDate \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qdatetime.h \
+		common.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtSql/QSqlDatabase \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtSql/qsqldatabase.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtSql/qtsqlglobal.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtSql/QSqlError \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtSql/qsqlerror.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtSql/QSqlQuery \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtSql/qsqlquery.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QMessageBox \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qmessagebox.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/QDebug \
+		vipcost.h \
+		moc_predefs.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/bin/moc
+	/opt/Qt5.11.1/5.11.1/gcc_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/opt/Qt5.11.1/5.11.1/gcc_64/mkspecs/linux-g++ -I/media/l1b0/软件工程_日常/大三上/数据库原理与设计/大作业/resturant -I/media/l1b0/软件工程_日常/大三上/数据库原理与设计/大作业/resturant -I/opt/Qt5.11.1/5.11.1/gcc_64/include -I/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets -I/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui -I/opt/Qt5.11.1/5.11.1/gcc_64/include/QtSql -I/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include vipcost.h -o moc_vipcost.cpp
+
 moc_vipinfoo.cpp: /opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QDialog \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qdialog.h \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
@@ -1549,9 +1826,13 @@ compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_login.h ui_mainwindow.h ui_registervip.h ui_vipinfoo.h
+compiler_uic_make_all: ui_checkcount.h ui_login.h ui_mainwindow.h ui_registervip.h ui_vipcost.h ui_vipinfoo.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_login.h ui_mainwindow.h ui_registervip.h ui_vipinfoo.h
+	-$(DEL_FILE) ui_checkcount.h ui_login.h ui_mainwindow.h ui_registervip.h ui_vipcost.h ui_vipinfoo.h
+ui_checkcount.h: checkcount.ui \
+		/opt/Qt5.11.1/5.11.1/gcc_64/bin/uic
+	/opt/Qt5.11.1/5.11.1/gcc_64/bin/uic checkcount.ui -o ui_checkcount.h
+
 ui_login.h: login.ui \
 		/opt/Qt5.11.1/5.11.1/gcc_64/bin/uic
 	/opt/Qt5.11.1/5.11.1/gcc_64/bin/uic login.ui -o ui_login.h
@@ -1563,6 +1844,10 @@ ui_mainwindow.h: mainwindow.ui \
 ui_registervip.h: registervip.ui \
 		/opt/Qt5.11.1/5.11.1/gcc_64/bin/uic
 	/opt/Qt5.11.1/5.11.1/gcc_64/bin/uic registervip.ui -o ui_registervip.h
+
+ui_vipcost.h: vipcost.ui \
+		/opt/Qt5.11.1/5.11.1/gcc_64/bin/uic
+	/opt/Qt5.11.1/5.11.1/gcc_64/bin/uic vipcost.ui -o ui_vipcost.h
 
 ui_vipinfoo.h: vipinfoo.ui \
 		/opt/Qt5.11.1/5.11.1/gcc_64/bin/uic
@@ -1577,6 +1862,148 @@ compiler_lex_clean:
 compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
+
+checkcount.o: checkcount.cpp checkcount.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QDialog \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qdialog.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qtguiglobal.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qglobal.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qconfig.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qtcore-config.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qsystemdetection.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qprocessordetection.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qcompilerdetection.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qtypeinfo.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qsysinfo.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qlogging.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qflags.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qatomic.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qbasicatomic.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qgenericatomic.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qatomic_msvc.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qglobalstatic.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qmutex.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qnumeric.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qversiontagging.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qtgui-config.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qwidget.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qwindowdefs.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qobjectdefs.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qnamespace.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qobject.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qstring.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qchar.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qbytearray.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qrefcount.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qarraydata.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qstringliteral.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qstringalgorithms.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qstringview.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qstringbuilder.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qlist.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qalgorithms.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qiterator.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qhashfunctions.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qpair.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qbytearraylist.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qstringlist.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qregexp.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qstringmatcher.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qcoreevent.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qscopedpointer.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qmetatype.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qvarlengtharray.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qcontainerfwd.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qobject_impl.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qmargins.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qpaintdevice.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qrect.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qsize.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qpoint.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qpalette.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qcolor.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qrgb.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qrgba64.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qbrush.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qvector.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qmatrix.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qpolygon.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qregion.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qdatastream.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qiodevice.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qline.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qtransform.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qpainterpath.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qimage.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qpixelformat.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qpixmap.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qsharedpointer.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qshareddata.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qhash.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qfont.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qfontmetrics.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qfontinfo.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qcursor.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qkeysequence.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qevent.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qvariant.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qmap.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qdebug.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qtextstream.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qlocale.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qset.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qcontiguouscache.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qurl.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qurlquery.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qfile.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qfiledevice.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qvector2d.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qtouchdevice.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/QDebug \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QTableWidget \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qtablewidget.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qtableview.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qabstractitemview.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qframe.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qabstractitemmodel.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qitemselectionmodel.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qstyleoption.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qvalidator.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qregularexpression.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qicon.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qslider.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qabstractslider.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qstyle.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qtabbar.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qtabwidget.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qrubberband.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/QLatin1Literal \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QAbstractButton \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qabstractbutton.h \
+		common.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtSql/QSqlDatabase \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtSql/qsqldatabase.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtSql/qtsqlglobal.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtSql/QSqlError \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtSql/qsqlerror.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtSql/QSqlQuery \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtSql/qsqlquery.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QMessageBox \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qmessagebox.h \
+		ui_checkcount.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o checkcount.o checkcount.cpp
 
 login.o: login.cpp login.h \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QDialog \
@@ -2992,6 +3419,12 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QDialog \
 		login.h \
 		vipinfoo.h \
+		vipcost.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/QDate \
+		checkcount.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QTableWidget \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/QLatin1Literal \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QAbstractButton \
 		ui_mainwindow.h \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QApplication \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QHBoxLayout \
@@ -3001,7 +3434,6 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QMenuBar \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QPushButton \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QStatusBar \
-		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QTableWidget \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QToolBar
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp
 
@@ -3151,6 +3583,127 @@ registervip.o: registervip.cpp registervip.h \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o registervip.o registervip.cpp
 
+vipcost.o: vipcost.cpp vipcost.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QDialog \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qdialog.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qtguiglobal.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qglobal.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qconfig.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qtcore-config.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qsystemdetection.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qprocessordetection.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qcompilerdetection.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qtypeinfo.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qsysinfo.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qlogging.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qflags.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qatomic.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qbasicatomic.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qgenericatomic.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qatomic_msvc.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qglobalstatic.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qmutex.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qnumeric.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qversiontagging.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qtgui-config.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qwidget.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qwindowdefs.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qobjectdefs.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qnamespace.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qobject.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qstring.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qchar.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qbytearray.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qrefcount.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qarraydata.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qstringliteral.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qstringalgorithms.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qstringview.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qstringbuilder.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qlist.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qalgorithms.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qiterator.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qhashfunctions.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qpair.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qbytearraylist.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qstringlist.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qregexp.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qstringmatcher.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qcoreevent.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qscopedpointer.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qmetatype.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qvarlengtharray.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qcontainerfwd.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qobject_impl.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qmargins.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qpaintdevice.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qrect.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qsize.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qpoint.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qpalette.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qcolor.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qrgb.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qrgba64.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qbrush.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qvector.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qmatrix.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qpolygon.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qregion.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qdatastream.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qiodevice.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qline.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qtransform.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qpainterpath.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qimage.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qpixelformat.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qpixmap.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qsharedpointer.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qshareddata.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qhash.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qfont.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qfontmetrics.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qfontinfo.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qcursor.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qkeysequence.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qevent.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qvariant.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qmap.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qdebug.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qtextstream.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qlocale.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qset.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qcontiguouscache.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qurl.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qurlquery.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qfile.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qfiledevice.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qvector2d.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtGui/qtouchdevice.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/QDate \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/qdatetime.h \
+		common.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtSql/QSqlDatabase \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtSql/qsqldatabase.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtSql/qtsqlglobal.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtSql/QSqlError \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtSql/qsqlerror.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtSql/QSqlQuery \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtSql/qsqlquery.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QMessageBox \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qmessagebox.h \
+		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtCore/QDebug \
+		ui_vipcost.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o vipcost.o vipcost.cpp
+
 vipinfoo.o: vipinfoo.cpp vipinfoo.h \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QDialog \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/qdialog.h \
@@ -3296,6 +3849,9 @@ vipinfoo.o: vipinfoo.cpp vipinfoo.h \
 		/opt/Qt5.11.1/5.11.1/gcc_64/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o vipinfoo.o vipinfoo.cpp
 
+moc_checkcount.o: moc_checkcount.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_checkcount.o moc_checkcount.cpp
+
 moc_login.o: moc_login.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_login.o moc_login.cpp
 
@@ -3304,6 +3860,9 @@ moc_mainwindow.o: moc_mainwindow.cpp
 
 moc_registervip.o: moc_registervip.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_registervip.o moc_registervip.cpp
+
+moc_vipcost.o: moc_vipcost.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_vipcost.o moc_vipcost.cpp
 
 moc_vipinfoo.o: moc_vipinfoo.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_vipinfoo.o moc_vipinfoo.cpp

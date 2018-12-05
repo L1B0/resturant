@@ -26,6 +26,7 @@ private:
     Ui::MainWindow *ui;
     QString phone;
     int people,tableNumber;
+    bool paied;
     void closeEvent( QCloseEvent *e );
 
 private slots:
