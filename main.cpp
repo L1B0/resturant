@@ -4,7 +4,7 @@
 #include <QApplication>
 
 QSqlDatabase db;
-bool vip;
+bool ivip;
 
 int main(int argc, char *argv[])
 {

@@ -25,14 +25,14 @@ void vipInfoo::showVIP()
     while(query->next())
     {
         QString n = query->value(1).toString(), l = query->value(2).toString(), s = query->value(3).toString(), p = query->value(0).toString();
-        //qDebug() << n << p << s << l;
-        ui->name->setText( n );
+        qDebug() << n << p << s << l;
+        ui->name->setText(QString("姓名: %1").arg(n));
         //qDebug() << '1';
-        ui->phone->setText( p );
+        ui->phone->setText(QString("手机号: %1").arg(p) );
         //qDebug() << '1';
-        ui->sum->setText( s );
+        ui->sumPrice->setText(QString("消费总额: %1").arg(s) );
         //qDebug() << '1';
-        ui->level->setText( l );
+        ui->level->setText(QString("会员等级: %1").arg(l) );
     }
     return ;
 }

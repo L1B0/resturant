@@ -15,7 +15,6 @@
 #include <QtWidgets/QDialogButtonBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
-#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -28,17 +27,13 @@ public:
     QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout;
-    QLabel *label_2;
-    QLineEdit *name;
+    QLabel *name;
     QHBoxLayout *horizontalLayout_5;
-    QLabel *label_6;
-    QLineEdit *phone;
+    QLabel *phone;
     QHBoxLayout *horizontalLayout_6;
-    QLabel *label_7;
-    QLineEdit *sum;
+    QLabel *sumPrice;
     QHBoxLayout *horizontalLayout_4;
-    QLabel *label_5;
-    QLineEdit *level;
+    QLabel *level;
     QLabel *label;
 
     void setupUi(QDialog *vipInfoo)
@@ -59,17 +54,11 @@ public:
         verticalLayout->setContentsMargins(0, 0, 0, 0);
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        label_2 = new QLabel(layoutWidget);
-        label_2->setObjectName(QStringLiteral("label_2"));
+        name = new QLabel(layoutWidget);
+        name->setObjectName(QStringLiteral("name"));
         QFont font;
         font.setPointSize(15);
-        label_2->setFont(font);
-
-        horizontalLayout->addWidget(label_2);
-
-        name = new QLineEdit(layoutWidget);
-        name->setObjectName(QStringLiteral("name"));
-        name->setEnabled(false);
+        name->setFont(font);
 
         horizontalLayout->addWidget(name);
 
@@ -78,15 +67,9 @@ public:
 
         horizontalLayout_5 = new QHBoxLayout();
         horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
-        label_6 = new QLabel(layoutWidget);
-        label_6->setObjectName(QStringLiteral("label_6"));
-        label_6->setFont(font);
-
-        horizontalLayout_5->addWidget(label_6);
-
-        phone = new QLineEdit(layoutWidget);
+        phone = new QLabel(layoutWidget);
         phone->setObjectName(QStringLiteral("phone"));
-        phone->setEnabled(false);
+        phone->setFont(font);
 
         horizontalLayout_5->addWidget(phone);
 
@@ -95,32 +78,20 @@ public:
 
         horizontalLayout_6 = new QHBoxLayout();
         horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
-        label_7 = new QLabel(layoutWidget);
-        label_7->setObjectName(QStringLiteral("label_7"));
-        label_7->setFont(font);
+        sumPrice = new QLabel(layoutWidget);
+        sumPrice->setObjectName(QStringLiteral("sumPrice"));
+        sumPrice->setFont(font);
 
-        horizontalLayout_6->addWidget(label_7);
-
-        sum = new QLineEdit(layoutWidget);
-        sum->setObjectName(QStringLiteral("sum"));
-        sum->setEnabled(false);
-
-        horizontalLayout_6->addWidget(sum);
+        horizontalLayout_6->addWidget(sumPrice);
 
 
         verticalLayout->addLayout(horizontalLayout_6);
 
         horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
-        label_5 = new QLabel(layoutWidget);
-        label_5->setObjectName(QStringLiteral("label_5"));
-        label_5->setFont(font);
-
-        horizontalLayout_4->addWidget(label_5);
-
-        level = new QLineEdit(layoutWidget);
+        level = new QLabel(layoutWidget);
         level->setObjectName(QStringLiteral("level"));
-        level->setEnabled(false);
+        level->setFont(font);
 
         horizontalLayout_4->addWidget(level);
 
@@ -144,10 +115,10 @@ public:
     void retranslateUi(QDialog *vipInfoo)
     {
         vipInfoo->setWindowTitle(QApplication::translate("vipInfoo", "Dialog", nullptr));
-        label_2->setText(QApplication::translate("vipInfoo", "\345\247\223\345\220\215: ", nullptr));
-        label_6->setText(QApplication::translate("vipInfoo", "\346\211\213\346\234\272\345\217\267: ", nullptr));
-        label_7->setText(QApplication::translate("vipInfoo", "\346\266\210\350\264\271\346\200\273\351\242\235", nullptr));
-        label_5->setText(QApplication::translate("vipInfoo", "\344\274\232\345\221\230\347\255\211\347\272\247: ", nullptr));
+        name->setText(QApplication::translate("vipInfoo", "\345\247\223\345\220\215: ", nullptr));
+        phone->setText(QApplication::translate("vipInfoo", "\346\211\213\346\234\272\345\217\267: ", nullptr));
+        sumPrice->setText(QApplication::translate("vipInfoo", "\346\266\210\350\264\271\346\200\273\351\242\235: ", nullptr));
+        level->setText(QApplication::translate("vipInfoo", "\344\274\232\345\221\230\347\255\211\347\272\247: ", nullptr));
         label->setText(QApplication::translate("vipInfoo", "\344\274\232\345\221\230\344\277\241\346\201\257", nullptr));
     } // retranslateUi
 

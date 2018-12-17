@@ -10,6 +10,7 @@ MainWindow::MainWindow(QString phoneNumber,int peopleNum,int tableNum,QWidget *p
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ivip = isVIP(phoneNumber);
     people = peopleNum;
     phone = phoneNumber;
     tableNumber = tableNum; //sql select
@@ -213,7 +214,7 @@ void MainWindow::on_squareCounts_clicked()
 {
     //qDebug() << ui->clientMenu->rowCount();
     bool flag;
-    checkCount c(phone, tableNumber, ui->clientMenu,sumPrice,flag);
+    checkCount c(phone, tableNumber, people,  ui->clientMenu,sumPrice,flag);
     c.setWindowTitle("消费明细");
     c.exec();
 
@@ -239,6 +240,19 @@ void MainWindow::on_oriMenu_cellDoubleClicked(int row, int column)
             break;
         }
     }
+
+    QString sql = QString("select checkFoodNum('%1',1)").arg(ui->oriMenu->item(row,1)->text());
+    qDebug() << sql;
+    QSqlQuery *query = new QSqlQuery(db);
+    bool fff = query->exec(sql);
+    qDebug() << fff;
+
+    if( fff == false )
+    {
+        QMessageBox::information(NULL, tr("提醒"), tr("库存不足，请选择其他菜肴~"));
+        return ;
+    }
+
 
     if( flag )
     {
@@ -270,6 +284,12 @@ void MainWindow::on_oriMenu_cellDoubleClicked(int row, int column)
 void MainWindow::on_clientMenu_cellDoubleClicked(int row, int column)
 {
     QMessageBox::information(NULL, tr("提醒"), tr("减菜~"));
+
+    QString sql = QString("select checkFoodNum('%1',0)").arg(ui->clientMenu->item(row,1)->text());
+    qDebug() << sql;
+    QSqlQuery *query = new QSqlQuery(db);
+    bool fff = query->exec(sql);
+    qDebug() << fff;
 
     int nowNum = ui->clientMenu->item(row,3)->text().toInt(), nowPrice = ui->clientMenu->item(row,4)->text().toInt();
     int newNum = nowNum-1, newPrice = nowPrice-nowPrice/nowNum;

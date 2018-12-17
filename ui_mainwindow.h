@@ -65,6 +65,7 @@ public:
         oriMenu->setEditTriggers(QAbstractItemView::NoEditTriggers);
         oriMenu->setSelectionMode(QAbstractItemView::SingleSelection);
         oriMenu->setSelectionBehavior(QAbstractItemView::SelectRows);
+        oriMenu->verticalHeader()->setVisible(true);
         label_2 = new QLabel(centralWidget);
         label_2->setObjectName(QStringLiteral("label_2"));
         label_2->setGeometry(QRect(700, 20, 151, 51));
@@ -91,7 +92,9 @@ public:
         clientMenu->setObjectName(QStringLiteral("clientMenu"));
         clientMenu->setGeometry(QRect(700, 80, 651, 701));
         clientMenu->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        clientMenu->setSelectionMode(QAbstractItemView::SingleSelection);
         clientMenu->setSelectionBehavior(QAbstractItemView::SelectRows);
+        clientMenu->verticalHeader()->setVisible(true);
         layoutWidget = new QWidget(centralWidget);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
         layoutWidget->setGeometry(QRect(1110, 10, 241, 71));

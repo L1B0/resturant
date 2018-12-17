@@ -17,7 +17,7 @@ class checkCount : public QDialog
     Q_OBJECT
 
 public:
-    explicit checkCount(QString phone, int tableN, QTableWidget *payTable, int sumPrice, bool &flag, QWidget *parent = 0);
+    explicit checkCount(QString phone, int tableN, int peopleNum, QTableWidget *payTable, int sumPrice, bool &flag, QWidget *parent = 0);
     ~checkCount();
 
 private slots:
@@ -29,7 +29,7 @@ private slots:
 
 private:
     bool *f;
-    int tN;
+    int tN,pN;
     QString p;
     QTableWidget *pT;
     float sP;

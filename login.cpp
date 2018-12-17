@@ -84,11 +84,13 @@ int Login::mallocTable(int num)
 {
     QSqlQuery query(db);
     QString sql =QString("select id,people from restable where isused=0 order by people");
-    query.exec(sql);
-
+    qDebug() << sql;
+    bool f = query.exec(sql);
+    //qDebug() << f;
     int tableNumber=-1;
     while(query.next())
     {
+        //qDebug() << query.value(0) << query.value(1);
         if( query.value(1).toInt() >= num )
         {
             tableNumber = query.value(0).toInt();
@@ -97,6 +99,7 @@ int Login::mallocTable(int num)
             break;
         }
     }
+    qDebug() << "table" << tableNumber;
     return tableNumber;
 }
 

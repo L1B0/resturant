@@ -10,5 +10,5 @@
 using namespace std;
 
 extern QSqlDatabase db;
-extern bool vip;
+extern bool ivip;
 #endif // COMMON_H
